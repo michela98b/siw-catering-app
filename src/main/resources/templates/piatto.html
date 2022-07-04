@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+</head>
+<body>
+	<header th:replace="fragments/base.html :: navbar"></header>
+	
+	<div class="page-content container-fluid">
+	
+		<div style="width: 100%; height: 100%; display: flex;">
+			<div class="scheda-container">
+			
+				<div class="row header-row m-0">
+					<p class="scheda-header">Scheda del piatto</p>
+					<img th:if="${piatto.vegetariano}" th:src="@{/images/veggie.png}"
+						class="veggie-icon-header" />
+				</div>
+				<h3 th:text="${piatto.nome}">nome</h3>
+
+				<p th:text="${piatto.descrizione}">desc</p>
+				<span class="fw-500">Ingredienti:</span>
+				<p class="ingredienti-info">Tutti i nostri piatti sono prodotti con ingredienti di origine controllata</p>
+				
+				<ul style="margin-left: 20px">
+					<li th:each="i : ${piatto.ingredienti}">
+						<div>
+							<span class="fw-500" th:text="${i.nome}">nome i</span>
+						</div>
+						<div>
+							<span th:text="${i.descrizione}" class="f-14">desc
+								i</span> 
+						</div>
+						<div style="margin-bottom: 5px">
+							<span class="f-14 fw-500">Origine: </span><span th:text="${i.origine}" class="f-14">origine
+								i</span>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+		
+	</div>
+	
+</body>
+</html>

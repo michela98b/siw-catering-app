@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+<title>Buffets</title>
+</head>
+
+<body>
+
+	<header th:replace="fragments/base.html :: navbar"></header>
+	<div class="page-content container-fluid">
+		<p class="buffet-title">I nostri buffet</p>
+
+		<div style="display: flex; flex-direction: row;">
+			<div th:each="buffet : ${buffets}">
+
+				<div class="card">
+			
+					<div class="card-body">
+					<img class="card-image" th:if="${buffet.photo}" th:src="@{${buffet.getPhotoImagePath()}}" />
+					<img class="card-image" th:unless="${buffet.photo}" th:src="@{/images/buffet.jpeg}" />
+						<h5 th:text="${buffet.nome}">nome</h5>
+
+						<p class="card-text" th:text="${buffet.descrizione}">descrizine</p>
+						<a th:href="@{'/buffet' + '/' + ${buffet.id}}"><span>Scopri di più</span></a>
+					</div>
+				
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</body>
+
+</html>

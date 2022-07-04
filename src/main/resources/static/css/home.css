@@ -1,0 +1,52 @@
+.section-content {
+	position: relative;
+	height: 350px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.section-content::before {
+	content: "";
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.85;
+}
+
+.buffets-section::before {
+	background-image: url(/images/buffets.jpg);
+}
+
+.ingredienti-section::before {
+	background-image: url(/images/farina.jpg);
+}
+
+.chefs-section::before {
+	background-image: url(/images/chefs.jpg);
+}
+
+.piatti-section::before {
+	background-image: url(/images/pasta.jpg);
+	background-position:center;
+}
+
+.section-text {
+	position: relative;
+	color: #ffffff;
+	text-align: center;
+}
+
+.section-button{
+	position: relative;
+	color: #ffffff;
+	text-align: center;
+	border: 1px solid #fff;
+	padding: 10px 30px;
+    border-radius: 10px;
+}

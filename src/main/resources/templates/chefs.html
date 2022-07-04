@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+<title>Buffets</title>
+</head>
+
+<body>
+
+	<header th:replace="fragments/base.html :: navbar"></header>
+	<div class="page-content container-fluid">
+		<p class="buffet-title">I nostri chef</p>
+
+		<div style="display: flex; flex-direction: row;">
+			<div th:each="chef : ${chefs}">
+
+				<div class="card" style="margin-right:20px">
+			
+					<div class="card-body">
+					<img class="card-image" th:src="@{/images/buffets.jpg}" />
+						<h5 th:text="${chef.nome} + ' ' +${chef.cognome}">nome</h5>
+						<a th:href="@{'/chef' + '/' + ${chef.id}}"><span>Scopri di più</span></a>
+					</div>
+				
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+</head>
+<body>
+	<header th:replace="fragments/base.html :: navbar"></header>
+
+	<div class="page-content container-fluid">
+
+		<div style="width: 100%; height: 100%; display: flex;">
+			<div class="scheda-container">
+
+				<p class="scheda-header">Scheda dello Chef</p>
+
+				<div class="row">
+					<img th:src="@{/images/cuoco.png}" class="chef-image" />
+					<div>
+						<h3 th:text="${chef.nome} + ' ' + ${chef.cognome}">nome</h3>
+						<p th:text="'Nazionalita ' + ${chef.nazionalita}">naz</p>
+
+					</div>
+
+				</div>
+				
+				<p class="fw-500" style="margin-top:10px">Buffet:</p>
+				<ul style="margin-left: 20px">
+					<li th:each="b : ${chef.buffets}">
+						<div>
+							<span class="fw-500" th:text="${b.nome}">nome i</span>
+						</div>
+						<div style="margin-bottom: 5px">
+							<span th:text="${b.descrizione}" class="f-14">desc
+								i</span>
+						</div>
+					</li>
+				</ul>
+
+
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

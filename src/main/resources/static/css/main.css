@@ -1,0 +1,28 @@
+button{
+	background-color: #bab0ac;
+    color: white;
+    border: none;
+    border-radius: 10px !important;
+    padding: 5px 50px;
+    cursor: pointer;
+}
+
+
+input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #bab0ac;
+}
+
+select{
+	border-radius: 10px;
+    padding: 2px 10px;
+}
+
+card{
+	border-radius:10px;
+}
+
+a{
+	color: #958580;
+}

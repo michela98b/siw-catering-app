@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+<title>Conferma cancellazione</title>
+</head>
+
+<body>
+	<div>
+		<h1>Conferma di cancellazione</h1>
+		<span>Sei sicuro di voler eliminare il buffet </span> <span
+			class="fw-500" th:text="${buffet.nome}">nome</span> 
+
+		<div class="delete-actions-row">
+
+			<a th:href="@{'/admin/buffets'}" th:text="Annulla" style="margin-right:10px">ANNULLA</a>
+			<a th:href="@{'/admin/deleteBuffet' + '/' + ${buffet.id}}"><button
+					type="submit">Conferma</button></a>
+
+		</div>
+
+	</div>
+</body>
+
+</html>

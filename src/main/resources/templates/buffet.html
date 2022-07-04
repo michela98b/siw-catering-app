@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js"
+	crossorigin="anonymous"></script>
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', sans-serif;
+	font-size: 11pt;
+}
+</style>
+<title>Buffet</title>
+</head>
+<body>
+	<header th:replace="fragments/base.html :: navbar"></header>
+	<div class="page-content container-fluid">
+
+
+		<div class="row" style="height: 100%">
+
+			<div class="col-4 buffet-image-container">
+				<img class="buffet-image" th:if="${buffet.photo}"
+					th:src="@{${buffet.getPhotoImagePath()}}" /> <img
+					class="buffet-image" th:unless="${buffet.photo}"
+					th:src="@{/images/buffet.jpeg}" />
+			</div>
+
+			<div class="col-8" style="padding-top: 30px">
+
+				<h4 th:text="${buffet.nome}">nome</h4>
+				<span th:text="${buffet.descrizione}">desc</span>
+				<p>
+					Realizzato dallo chef <a class="card-text"
+						th:href="@{'/chef' + '/' + ${buffet.chef.id}}"> <span
+						th:text="${buffet.chef.nome}">nome cuoco</span> <span
+						th:text="${buffet.chef.cognome}">cognome cuoco</span>
+					</a>
+				</p>
+				<p>
+					Il buffet <span th:text="${buffet.nome}">nome</span> contiene i
+					seguenti piatti:
+				<ul>
+					<li th:each="piatto : ${buffet.piatti}"><a class="card-text"
+						th:href="@{'/piatto' + '/' + ${piatto.id}}"> <span
+							th:text="${piatto.getNome()}">piattonome</span> <img
+							th:if="${piatto.vegetariano}" th:src="@{/images/veggie.png}"
+							class="veggie-img" />
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

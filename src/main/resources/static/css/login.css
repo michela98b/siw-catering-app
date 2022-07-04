@@ -1,0 +1,39 @@
+.login-page {
+	width:100vw;
+	height: 100vh;
+}
+
+.login-page::before {
+	content: "";
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+	background-image: url(/images/dolci.jpg);
+}
+
+.login-form {
+	background-color: #ffffff;
+	width: 100%;
+	text-align:center;
+	padding:20px;
+	border-radius:10px;
+}
+
+.login-form-content{
+	width: 400px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    padding-top: 100px;
+    position: relative;
+}
+
+.input-form{
+	margin-bottom:10px;
+}
+

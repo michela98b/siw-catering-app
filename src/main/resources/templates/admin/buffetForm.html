@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+</head>
+<body>
+	<header th:replace="fragments/base.html :: navbar"></header>
+	<div class="page-content container-fluid">
+
+		<div class="row" style="height: 100%">
+
+			<div class="col-3 left-side-container">
+				<h4 class="form-title">Componi un nuovo buffet</h4>
+			</div>
+
+			<div class="col-9 right-side-container">
+
+				<form
+					th:action="@{/admin/buffet}"
+					method="POST" th:object="${buffet}" enctype="multipart/form-data">
+
+					<div th:if="${#fields.hasGlobalErrors()}">
+						 
+						<p class="error-text" th:each="err : ${#fields.globalErrors()}"
+							th:text="${err}">...</p>
+					</div>
+
+
+					<div>
+
+						<div class="form-field">
+							<label class="form-label">Nome </label>
+							<div>
+								<input type="text" th:field="*{nome}" class="w-50" />
+							</div>
+							<span class="error-text" th:if="${#fields.hasErrors('nome')}"
+								th:errors="*{nome}"> </span>
+						</div>
+
+						<div class="form-field">
+							<label class="form-label">Descrizione </label>
+							<div>
+								<input type="text" th:field="*{descrizione}" class="w-50" />
+							</div>
+							<span class="error-text"
+								th:if="${#fields.hasErrors('descrizione')}"
+								th:errors="*{descrizione}"></span>
+						</div>
+
+						<div class="form-field">
+							<label class="form-label">Chef</label>
+							<div>
+								<select name="chef" th:field="*{chef}">
+									<option th:each="chef : ${chefs}" th:value="${chef.getId()}"
+										th:text="${chef.getNome()} + ' ' + ${chef.getCognome()}"></option>
+								</select>
+							</div>
+						</div>
+
+
+						<p class="ingredienti-title">Scegli i piatti da inserire nel
+							buffet</p>
+
+						<div class="row ingredienti">
+							<div th:each="p : ${listaPiatti}">
+
+								<div class="checkbox-red grid">
+									<input type="checkbox" th:field="*{piatti}" th:value="${p.id}" />
+									<label th:text="${p.nome}"></label> <img
+										th:if="${p.vegetariano}" th:src="@{/images/veggie.png}"
+										class="veggie-img" />
+								</div>
+
+							</div>
+						</div>
+
+						<div style="margin:10px 0px">
+							<label class="ingredienti-title">Immagine </label> <input type="file" name="image"
+								accept="image/png, image/jpeg" />
+						</div>
+
+
+						<div>
+							<span><button type="submit">Crea nuovo buffet</button></span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

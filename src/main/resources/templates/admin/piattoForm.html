@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+<title>Nuovo piatto</title>
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: navbar"></header>
+	<div class="page-content container-fluid">
+
+		<div class="row" style="height: 100%">
+		
+			<div class="col-3 left-side-container">
+				<h4 class="form-title">Aggiungi un nuovo piatto</h4>
+			</div>
+			
+			<div class="col-9 right-side-container">
+
+				<form th:action="@{/admin/piatto}" method="POST"
+					th:object="${piatto}">
+					
+					<div th:if="${#fields.hasGlobalErrors()}">		 
+						<p class="error-text" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+					</div>
+					
+					<div>
+						<div class="form-field">
+							<label class="form-label">Nome</label>
+							<div>
+								<input th:field="*{nome}" type="text" class="w-50" />
+							</div>
+							<span class="error-text" th:if="${#fields.hasErrors('nome')}"
+								th:errors="*{nome}"> </span>
+						</div>
+
+						<div class="form-field">
+							<label class="form-label">Descrizione</label>
+							<div>
+								<input th:field="*{descrizione}" type="text" class="w-50" />
+							</div>
+							<span class="error-text"
+								th:if="${#fields.hasErrors('descrizione')}"
+								th:errors="*{descrizione}"></span>
+						</div>
+						
+						<input type="checkbox" th:field="*{vegetariano}"
+							th:value="${vegetariano}" /> <label>Piatto vegetariano</label>
+							<img th:src="@{/images/veggie.png}"
+							class="veggie-img" /> 
+
+						<p class="f-16 fw-500" style="margin-top:10px">Scegli gli ingredienti</p>
+
+						<div class="row ingredienti">
+
+							<div th:each="i : ${listaIngredienti}">
+								<div class="checkbox-red grid">
+									<input type="checkbox" th:field="*{ingredienti}"
+										th:value="${i.id}" /> 
+										
+										<label th:text="${i.nome} + ' (' + ${i.descrizione} +')'"></label>
+										
+								</div>
+							</div>
+
+						</div>
+
+						<div>
+							<span><button type="submit">Crea nuovo piatto</button></span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

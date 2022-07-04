@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/home.css}" rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+</head>
+<body>
+
+	<header th:replace="fragments/base.html :: navbar"></header>
+	
+	<div class="page-content">
+
+		<section class="section-content buffets-section">
+			<h2 class="section-text">I nostri buffet</h2>
+			<p class="section-text">Crea un nuovo buffet</p>
+			<a class="section-button" th:href="@{/admin/buffets}" role="button">Scopri</a>
+		</section>
+		
+		<section class="section-content piatti-section">
+			<h2 class="section-text">I nostri piatti</h2>
+			<p class="section-text">Crea un nuovo piatto</p>
+			<a class="section-button" th:href="@{/admin/piatto}" role="button">Crea</a>
+		</section>
+		
+		<section class="section-content ingredienti-section">
+			<h2 class="section-text">I nostri ingredienti</h2>
+			<p class="section-text">Aggiungi un nuovo ingrediente</p>
+			<a class="section-button" th:href="@{/admin/ingredienti}" role="button">Scopri</a>
+		</section>
+		
+		
+	</div>
+	
+</body>
+</html>

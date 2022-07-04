@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/home.css}" rel="stylesheet">
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: navbar"></header>
+
+	<div class="page-content">
+
+		<section class="section-content buffets-section">
+			<h2 class="section-text">I nostri buffet</h2>
+			<p class="section-text">Scopri i nostri buffet</p>
+			<a class="section-button" th:href="@{/buffet}" role="button">Scopri</a>
+		</section>
+
+		<section class="section-content chefs-section">
+			<h2 class="section-text">I nostri chefs</h2>
+			<p class="section-text">Scopri i nostri chefs stellati</p>
+			<a class="section-button" th:href="@{/chef}" role="button">Scopri</a>
+		</section>
+
+	</div>
+
+</body>
+</html>

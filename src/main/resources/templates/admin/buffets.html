@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<script src="https://kit.fontawesome.com/a076d05399.js"
+	crossorigin="anonymous"></script>
+<link th:href="@{/css/bootstrap.min.css}" href="/css/bootstrap.min.css"
+	rel="stylesheet">
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<link th:href="@{/css/navbar.css}" rel="stylesheet">
+<link th:href="@{/css/pages.css}" rel="stylesheet">
+<link th:href="@{http://fonts.googleapis.com/css?family=Poppins}"
+	rel='stylesheet' type='text/css' />
+<style>
+body {
+	font-family: 'Poppins', serif;
+	font-size: 11pt;
+}
+</style>
+<title>Buffets</title>
+
+</head>
+
+<body>
+
+	<header th:replace="fragments/base.html :: navbar"></header>
+	<div class="page-content container-fluid">
+		<div class="table-head-button">
+			<div>
+				<span class="table-title">Buffet</span>
+			</div>
+			<div>
+
+				<a th:href="@{/admin/piatto}"><button type="submit"
+						style="margin-right: 10px">Crea piatto</button></a> <a
+					th:href="@{/admin/buffet}"><button type="submit">Crea
+						Buffet</button></a>
+			</div>
+		</div>
+		<table class="table">
+
+			<thead>
+				<tr>
+					<th scope="col">Nome</th>
+					<th scope="col">Descrizione</th>
+					<th scope="col">Chef</th>
+					<th scope="col">Piatti</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="buffet : ${buffets}">
+
+					<td th:text="${buffet.nome}">nome</td>
+					<td th:text="${buffet.descrizione}" style="width: 30%">descrizione</td>
+					<td><a class="card-text"
+						th:href="@{'/chef' + '/' + ${buffet.chef.id}}"> <span
+							th:text="${buffet.chef.nome}">nome cuoco</span> <span
+							th:text="${buffet.chef.cognome}">cognome cuoco</span>
+					</a></td>
+					<td>
+						<div th:each="piatto : ${buffet.piatti}">
+							<a class="card-text" th:href="@{'/piatto' + '/' + ${piatto.id}}">
+								<span th:text="${piatto.nome}">nome</span>
+							</a>
+						</div>
+					</td>
+					<td><a th:href="@{'toDeleteBuffet' + '/' + ${buffet.id}}">
+							<i class="fas fa-trash"></i>
+					</a></td>
+				</tr>
+			</tbody>
+
+
+		</table>
+	</div>
+</body>
+
+</html>
