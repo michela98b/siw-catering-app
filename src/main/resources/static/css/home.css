@@ -29,11 +29,12 @@
 
 .chefs-section::before {
 	background-image: url(/images/chefs.jpg);
+	background-position: center;
 }
 
 .piatti-section::before {
 	background-image: url(/images/pasta.jpg);
-	background-position:center;
+	background-position: center;
 }
 
 .section-text {
@@ -42,11 +43,11 @@
 	text-align: center;
 }
 
-.section-button{
+.section-button {
 	position: relative;
 	color: #ffffff;
 	text-align: center;
 	border: 1px solid #fff;
 	padding: 10px 30px;
-    border-radius: 10px;
+	border-radius: 10px;
 }
